@@ -30,7 +30,7 @@ const OrderTracker = () => {
             <Container>
                 <div className="container-fluid">
                     <div className="row">
-                        <Row>
+                        <Row style={{Padding:"50px"}}>
                         <div className="col-md-12">
                             <div className="container-fluid p-2 align-items-center">
                                 <div className="d-flex justify-content-around">
