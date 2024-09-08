@@ -9,67 +9,6 @@ import Col from 'react-bootstrap/Col';
 import NavBar from './NavBar';
 
 function AskLead(){
-    const [formData, setFormData] = useState({
-        firstName: '',
-        lastName: '',
-        rollNumber: '',
-        memberNumber: '',
-        degree: '',
-        department: '',
-        domain: '',
-        sponsorship: '',
-        collegeEmail: '',
-        eventType: '',
-        description: '',
-      });
-      const [isSubmitted, setIsSubmitted] = useState(false);
-    
-      const handleChange = (event) => {
-        const { name, value } = event.target;
-        setFormData((prevData) => ({ ...prevData, [name]:   
-     value }));
-      };
-    
-      const handleSubmit = async (event) => {
-        event.preventDefault();   
-    
-    
-        // Form validation (optional but recommended)
-        if (!formData.firstName || !formData.lastName || !formData.collegeEmail) {
-          alert('Please fill in all required fields (First Name, Last Name, College Email)');
-          return;
-        }
-    
-        try {
-          const response = await fetch('/api/submit-lead', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(formData),
-          });
-    
-          if (!response.ok) {
-            throw new Error('Failed to   submit lead. Please try again later.');
-          }
-
-          setIsSubmitted(true);
-          setFormData({ // Clear form data after successful submission
-            firstName: '',
-            lastName: '',
-            rollNumber: '',
-            memberNumber: '',
-            degree: '',
-            department: '',
-            domain: '',
-            sponsorship: '',
-            collegeEmail: '',
-            eventType: '',
-            description: '',
-          });
-        } catch (error) {
-          console.error('Error submitting lead:', error);
-          alert('An error occurred. Please try again later.');
-        }
-      };
   return (
     <>
         <header><NavBar/></header>
@@ -159,7 +98,7 @@ function AskLead(){
                         </Form.Group>
                     </Col>
                     <Col>
-                        <Col><center><Button type="submit" onClick={handleSubmit}>Submit form</Button></center></Col>
+                        <Col><center><Button type="submit">Submit form</Button></center></Col>
                     </Col>
                 </Row>
             </Container>

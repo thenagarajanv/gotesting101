@@ -4,6 +4,8 @@ import Navbar from 'react-bootstrap/Navbar';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import Logo from '../Logo.png'
 import { Link } from 'react-router-dom';
+import FloatingLabel from 'react-bootstrap/FloatingLabel';
+import Form from 'react-bootstrap/Form';
 
 function OffcanvasExample() {
   return (
@@ -12,7 +14,7 @@ function OffcanvasExample() {
         {[false].map((expand) => (
           <Navbar key={expand} expand={expand} className="bg-body-tertiary mb-3">
             <Container fluid>
-              <Link to='/'>
+              <Link to='/Home'>
                 <Navbar.Brand><img style={{height:"30px", width:"100px", left:"30px"}} src={Logo} alt=''></img></Navbar.Brand>
               </Link>
               <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} />

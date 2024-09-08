@@ -16,6 +16,7 @@ const userSchema = new mongoose.Schema({
         eventWorkshop:{type:String},
         sponcership:{type:String},
         rsvpCount:{type: String},
+        eventStatus:{types:String},
     }]
 });
 

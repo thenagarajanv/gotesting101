@@ -1,10 +1,14 @@
-const User = require("./Models/User");
+const User = require('./Models/Users');
+const express = require('express');
+const cors = require('cors');
+const mongoose = require('mongoose');
 const app = express();
 app.use(express.json());
 app.use(cors());
 mongoose.connect(
-    //"mongodb+srv://thenagarajanv:Nagarajan24@cluster0.ngfrvsi.mongodb.net/IncenseSticks?retryWrites=true&w=majority"
+  "mongodb+srv://thenagarajanv:gdsckce2024@gdsckce.axz22.mongodb.net/Gdsckce?retryWrites=true&w=majority&appName=Gdsckce"
 ).then(console.log("connected db"));
+
 
 app.get("/", (req, res) => {
     User.find({})
