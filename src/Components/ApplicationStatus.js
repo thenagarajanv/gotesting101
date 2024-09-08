@@ -1,10 +1,12 @@
 import React from 'react'
-import NavBar from './Components/NavBar';
+import NavBar from './NavBar';
 
 function ApplicationStatus(){
-  return (
-    <div>ApplicationStatus</div>
-  )
+    return (
+        <>
+            <header><NavBar/></header>
+        </>
+    )
 }
 
 export default ApplicationStatus
