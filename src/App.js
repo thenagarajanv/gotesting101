@@ -4,11 +4,11 @@ import { BrowserRouter, Routes, Route } from "react-router-dom"
 import Home from './Home.js';
 import AskLead from './Components/AskLead.js';
 import ApplicationStatus from './Components/ApplicationStatus.js';
-import LeaderBoard from './Components/LeaderBoard.js';
 import SignInForm from './SignIn.js';
 import Verification from "./Verification.js";
 import SignUpForm from './SignUp.js';
 import NavBar from './Components/NavBar.js';
+import Admin from "./Components/Admin.js";
 
 function App() {
   return(
@@ -23,6 +23,7 @@ function App() {
           <Route path="/" element={<Verification />}/>
           <Route path='/SignIn' element={<NavBar/>}/>
           <Route path='/SignUp' element={<NavBar/>}/>
+          <Route path="/Admin" element={<Admin/>}/>
         </Routes>
       </BrowserRouter>
   );

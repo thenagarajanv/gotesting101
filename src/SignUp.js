@@ -13,13 +13,33 @@ function SignUpForm() {
     });
   };
 
-  const handleOnSubmit = evt => {
+  const handleOnSubmit = async (evt) => {
     evt.preventDefault();
-
-    const { name, email, password } = state;
-    alert(
-      `You are sign up with name: ${name} email: ${email} and password: ${password}`
-    );
+    console.log("hii");
+    
+    try{
+      const request = await fetch("http://localhost:3008/api/signup",{method: "POST",
+      body: JSON.stringify({
+        Username: state.name,
+        Useremail: state.email,
+        Userpassword: state.password
+      }),
+      headers: {
+        "Content-type": "application/json"
+      }
+    });
+    console.log(request);
+    
+    }
+    catch(e){
+      console.log(e);
+      
+    }
+    
+    // alert(
+    //   `You are sign up with name: ${name} email: ${email} and password: ${password}`
+    // );
+    // await fetch("http://localhost:3008/");
 
     for (const key in state) {
       setState({
@@ -55,7 +75,7 @@ function SignUpForm() {
           onChange={handleChange}
           placeholder="Password"
         />
-        <button>Sign Up</button>
+        <button type="submit">Sign Up</button>
       </form>
     </div>
   );

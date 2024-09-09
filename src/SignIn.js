@@ -4,10 +4,30 @@ import { Link } from "react-router-dom";
 function SignInForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
+  const handleSubmit=async (e)=>{
+    e.preventDefault();
+    try{
+      console.log("Logginnng");
+      const data = await fetch("http://localhost:3008/api/Login",{method: "POST",
+      body: JSON.stringify({
+        Useremail:email,
+        Userpassword:password
+      }),
+      headers: {
+        "Content-type": "application/json"
+      }
+    });
+    
+    }
+    catch(e){
+      console.log(e);
+      
+    }
+  }
+    
   return (
     <div className="form-container sign-in-container">
-      <form>
+      <form onSubmit={handleSubmit}>
         <h1>Sign in</h1>
         <span>Use your account</span>
         <input
@@ -24,13 +44,11 @@ function SignInForm() {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        {email === "test@gmail.com" && password === "test123" ? (
-          <Link to="/verification">Sign In</Link>
-        ) : (
-          <button type="button" disabled>
+        
+          <button type="submit" >
             Sign In
           </button>
-        )}
+        
       </form>
     </div>
   );
