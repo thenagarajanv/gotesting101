@@ -1,78 +1,42 @@
-import React from "react";
+import React, { useState } from "react";
+import axios from "axios";
+
 function SignUpForm() {
-  const [state, setState] = React.useState({
-    name: "",
-    email: "",
-    password: ""
-  });
-  const handleChange = evt => {
-    const value = evt.target.value;
-    setState({
-      ...state,
-      [evt.target.name]: value
-    });
-  };
-
-  const handleOnSubmit = async (evt) => {
-    evt.preventDefault();
-    console.log("hii");
-    
-    try{
-      const request = await fetch("http://localhost:3008/api/signup",{method: "POST",
-      body: JSON.stringify({
-        Username: state.name,
-        Useremail: state.email,
-        Userpassword: state.password
-      }),
-      headers: {
-        "Content-type": "application/json"
-      }
-    });
-    console.log(request);
-    
-    }
-    catch(e){
-      console.log(e);
-      
-    }
-    
-    // alert(
-    //   `You are sign up with name: ${name} email: ${email} and password: ${password}`
-    // );
-    // await fetch("http://localhost:3008/");
-
-    for (const key in state) {
-      setState({
-        ...state,
-        [key]: ""
-      });
-    }
-  };
+  const [rollnumber, setRollNumber] = useState();
+  const [email, setEmail] = useState();
+  const [password, setPassword] = useState();
+  
+  const Submit = (e) => {
+    e.preventDefault();
+    axios.post("http://localhost:3001/createUser", { rollnumber : rollnumber, email : email, password : password})
+      .then(result => console.log(result))
+      .catch(err => console.log(err));
+  };
 
   return (
     <div className="form-container sign-up-container">
-      <form onSubmit={handleOnSubmit}>
+      <form onSubmit={Submit}>
         <h1>Create Account</h1>
         <span>Use your email for registration</span>
         <input
           type="text"
-          name="name"
-          value={state.name}
-          onChange={handleChange}
-          placeholder="Name"
+          name="RollNumber"
+          value={rollnumber}
+          onChange={(e) => setRollNumber(e.target.value)}
+          placeholder="Roll Number"
         />
         <input
           type="email"
           name="email"
-          value={state.email}
-          onChange={handleChange}
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
           placeholder="Email"
         />
         <input
           type="password"
           name="password"
-          value={state.password}
-          onChange={handleChange}
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
           placeholder="Password"
         />
         <button type="submit">Sign Up</button>

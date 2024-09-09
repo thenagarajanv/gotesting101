@@ -5,6 +5,7 @@ import Home from './Home.js';
 import AskLead from './Components/AskLead.js';
 import ApplicationStatus from './Components/ApplicationStatus.js';
 import SignInForm from './SignIn.js';
+import LeaderBoard from './Components/LeaderBoard.js';
 import Verification from "./Verification.js";
 import SignUpForm from './SignUp.js';
 import NavBar from './Components/NavBar.js';
