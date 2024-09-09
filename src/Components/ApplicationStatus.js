@@ -6,7 +6,6 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Accordion from 'react-bootstrap/Accordion';
-
 const OrderTracker = () => {
   return (
     <>
@@ -22,7 +21,7 @@ const OrderTracker = () => {
                 <p className="h5 text-dark">
                     <i className="text-primary fa-solid fa-lg mr-1"></i> <b>Roll Number :</b>
                     <span className="h5 text-dark">
-                    <i className="text-primary fa-solid fa-lg mr-1"></i> <b>717821F134</b>
+                    <i className="text-primary fa-solid fa-lg mr-1"></i> <b></b>
                     </span>
                 </p>
                 </div>

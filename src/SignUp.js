@@ -1,45 +1,62 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 function SignUpForm() {
-  const [rollnumber, setRollNumber] = useState();
-  const [email, setEmail] = useState();
-  const [password, setPassword] = useState();
+  const [rollnumber, setRollNumber] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const history = useNavigate();
   
-  const Submit = (e) => {
+  async function submit(e) {
     e.preventDefault();
-    axios.post("http://localhost:3001/createUser", { rollnumber : rollnumber, email : email, password : password})
-      .then(result => console.log(result))
-      .catch(err => console.log(err));
-  };
-
+    try{
+      await axios.post("http://localhost:3000/SignUp",{
+        email, password
+      })
+      .then(res =>{
+        if(res.data === "exist"){
+          alert("User already exist")
+        }else if(res.data === "notexist"){
+          history("/ApplicationStatus",{state:{id:email}})
+        }
+      })
+      .catch(e=>{
+        alert("Wrong details")
+        console.log(e);
+      })
+    }catch{
+      console.log(e);
+      
+    }
+  }
   return (
     <div className="form-container sign-up-container">
-      <form onSubmit={Submit}>
+      <form action="POST">
         <h1>Create Account</h1>
         <span>Use your email for registration</span>
         <input
           type="text"
-          name="RollNumber"
+          name="rollnumber"
           value={rollnumber}
-          onChange={(e) => setRollNumber(e.target.value)}
+          onChange={(e) => {setRollNumber(e.target.value)}}
           placeholder="Roll Number"
         />
         <input
           type="email"
           name="email"
           value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          onChange={(e) => {setEmail(e.target.value)}}
           placeholder="Email"
         />
         <input
           type="password"
           name="password"
           value={password}
-          onChange={(e) => setPassword(e.target.value)}
+          onChange={(e) => {setPassword(e.target.value)}}
           placeholder="Password"
         />
-        <button type="submit">Sign Up</button>
+        <button type="submit" onClick={submit}>Sign Up</button>
       </form>
     </div>
   );

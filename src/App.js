@@ -22,8 +22,6 @@ function App() {
           <Route path='/SignIn' element={<SignInForm/>}/>
           <Route path='/SignUp' element={<SignUpForm/>}/>
           <Route path="/" element={<Verification />}/>
-          <Route path='/SignIn' element={<NavBar/>}/>
-          <Route path='/SignUp' element={<NavBar/>}/>
           <Route path="/Admin" element={<Admin/>}/>
         </Routes>
       </BrowserRouter>
